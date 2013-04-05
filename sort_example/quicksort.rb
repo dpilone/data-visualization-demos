@@ -1,11 +1,12 @@
 # quicksort.rb
 # From: http://opennfo.wordpress.com/2009/02/15/quicksort-in-ruby/
 
-def quicksort(list, p, r)
+def quicksort(f, list, p, r)
     if p < r then
         q = partition(list, p, r)
-        quicksort(list, p, q-1)
-        quicksort(list, q+1, r)
+        f.puts "<tr><td>#{list}</td><td>#{p}</td><td>#{r}</td></tr>"
+        quicksort(f, list, p, q-1)
+        quicksort(f, list, q+1, r)
     end
 end
 
@@ -23,6 +24,20 @@ def partition(list, p, r)
 end
 
 # Testing it out
-a = [9,4,10,12,5,3,2,25,6,21,33,23,19,13,38,26]
-quicksort(a, 0, a.length-1)
+f = File.new('quicksort.html', 'w')
+f.puts "<!DOCTYPE html>"
+f.puts "<html>"
+f.puts "<head>"
+f.puts "<link href='bootstrap/css/bootstrap.min.css' rel='stylesheet' media='screen'>"
+f.puts "</head>"
+f.puts "<body>"
+f.puts "<table class='table table-hover table-bordered'>"
+f.puts "<thead><tr><th>List</th><th>p</th><th>r</th></tr></thead>"
+f.puts "<tbody>"
+#a = [9,4,10,12,3,5,10,3,2,25,6,21,33,23,19,13,38,26,12,3]
+a = [5,4,3,2,1]
+quicksort(f, a, 0, a.length-1)
+f.puts "</tbody>"
+f.puts "</body>"
+f.puts "</table>"
 puts a

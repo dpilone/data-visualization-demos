@@ -9,7 +9,6 @@ class ActiveSupport::Logger
   def visual msg, options = {}
     debug msg
     options[:event] = 'visual' unless options[:event]
-    vis_queue << [msg, options]
-#    sse.write msg, options if sse
+    vis_queue << [msg.to_json, options]
   end
 end

@@ -3,6 +3,7 @@ $(document).ready(function() {
     var source = new EventSource('/quicksort_viewer');
     source.addEventListener('visual', function(e) {
       console.log('got message: ' + e.data.toString());
-      $("#visualization").append('<li><code>' + e.data.toString() + '</code></li>');
+      vis = JSON.parse(e.data);
+      $("#visualization").append('<li>' + vis.list.toString() + '</li>');
     }, false);
 });

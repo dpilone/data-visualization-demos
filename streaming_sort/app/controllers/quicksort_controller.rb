@@ -3,8 +3,17 @@ require 'visualizer_logger'
 
 class QuicksortController < ApplicationController
   def index
-    a = [9,4,10,12,5,3,2,25,6,21,33,23,19,13,38,26]
+    a = scrambled_array params[:array]
     quicksort(a, 0, a.length-1)
-    #puts a.inspect
   end
+  
+  private
+  def scrambled_array user_array
+    if user_array
+      user_array.split ','
+    else
+      [23, 16, 8, 4, 42, 15]
+    end
+  end
+
 end

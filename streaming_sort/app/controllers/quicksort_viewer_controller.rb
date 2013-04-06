@@ -1,4 +1,6 @@
 require 'reloader/sse'
+require 'visualizer_logger'
+require 'quicksort'
 
 class QuicksortViewerController < ApplicationController
   include ActionController::Live
@@ -7,16 +9,10 @@ class QuicksortViewerController < ApplicationController
     # SSE expects the 'text/event-stream' content type
     response.headers['Content-Type'] == 'text/event-stream'
 
-    sse = Reloader::SSE.new(response.stream)
-    begin
-      loop do
-        sse.write({ :time => Time.now })
-        sleep 1
-      end
-    rescue IOError
-      # When a client disconnects we'll get an IOError on write, NBD.
-    ensure
-      sse.close
+    Rails.logger.visualize response do
+      a = [9,4,10,12,5,3,2,25,6,21,33,23,19,13,38,26]
+      quicksort(a, 0, a.length-1)
+      #puts a.inspect
     end
   end
 end

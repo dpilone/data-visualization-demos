@@ -4,10 +4,11 @@ StreamingSort::Application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = false
 
-  # Do not eager load code on boot.
-  config.eager_load = false
+  # We have to enable this and eager loading to get concurrency support in development
+  # mode which we need for live streaming concurrently with a normal request.
+  config.cache_classes = true
+  config.eager_load = true
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
@@ -24,4 +25,8 @@ StreamingSort::Application.configure do
 
   # Debug mode disables concatenation and preprocessing of assets.
   config.assets.debug = true
+
+  # For streaming we need concurrent connection support
+  config.cache_classes = true
+  config.eager_load = true
 end

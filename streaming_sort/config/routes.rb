@@ -1,5 +1,6 @@
 StreamingSort::Application.routes.draw do
   get 'quicksort_viewer' => 'quicksort_viewer#index'
+  get 'quicksort' => 'quicksort#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -2,7 +2,7 @@
 # From: http://opennfo.wordpress.com/2009/02/15/quicksort-in-ruby/
 
 def quicksort(list, left_index, right_index)
-    Rails.logger.visual({:list => list})
+    Rails.logger.visual({:list => list.inspect})
     if left_index < right_index then
         q = partition(list, left_index, right_index)
         quicksort(list, left_index, q-1)

@@ -10,9 +10,11 @@ class QuicksortController < ApplicationController
   private
   def scrambled_array user_array
     if user_array
-      user_array.split ','
+      user_array.split(',').map { |i| i.to_i }
     else
-      [23, 16, 8, 4, 42, 15]
+      a = []
+      30.times { a << rand(100) }
+      a
     end
   end
 

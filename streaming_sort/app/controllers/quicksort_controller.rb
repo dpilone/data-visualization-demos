@@ -4,7 +4,9 @@ require 'visualizer_logger'
 class QuicksortController < ApplicationController
   def index
     a = scrambled_array params[:array]
+    @original_array = a.clone
     quicksort(a, 0, a.length-1)
+    @sorted_array = a
   end
   
   private

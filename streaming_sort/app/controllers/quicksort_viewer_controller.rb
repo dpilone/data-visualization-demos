@@ -12,9 +12,9 @@ class QuicksortViewerController < ApplicationController
 
     begin
       loop do
+        sleep 0.5
         message = Rails.logger.vis_queue.pop
         sse.write message[0], message[1]
-        sleep 0.25
       end
     rescue Exception => e
       # We'll get this if we try to write and the stream has been closed

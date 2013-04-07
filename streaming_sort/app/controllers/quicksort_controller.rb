@@ -15,7 +15,7 @@ class QuicksortController < ApplicationController
       user_array.split(',').map { |i| i.to_i }
     else
       a = []
-      30.times { a << rand(100) }
+      30.times { a << rand(10..100) }
       a
     end
   end

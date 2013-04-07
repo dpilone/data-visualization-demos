@@ -8,7 +8,9 @@ class ActiveSupport::Logger
 
   def visual msg, options = {}
     debug msg
-    options[:event] = 'visual' unless options[:event]
-    vis_queue << [msg, options]
+    if level == DEBUG
+      options[:event] = 'visual' unless options[:event]
+      vis_queue << [msg, options]
+    end
   end
 end

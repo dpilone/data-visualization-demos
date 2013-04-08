@@ -24,5 +24,6 @@ end
 
 # Testing it out
 a = [9,4,10,12,5,3,2,25,6,21,33,23,19,13,38,26]
+puts a.inspect
 quicksort(a, 0, a.length-1)
 puts a.inspect
